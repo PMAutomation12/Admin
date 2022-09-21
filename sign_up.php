@@ -28,6 +28,11 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    form .error{
+      color: #ff0001;
+    }
+  </style>
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.3.1
@@ -50,71 +55,82 @@
               <div class="d-flex justify-content-center py-4">
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">NiceAdmin</span>
+                  <span class="d-none d-lg-block">PM Automation</span>
                 </a>
               </div><!-- End Logo -->
 
               <div class="card mb-3">
 
                 <div class="card-body">
+               
 
                   <div class="pt-4 pb-2">
+                  <div id="errorMessage" class="alert alert-success d-none"></div>
                     <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3" id="registerform" name="registerform" >
                     <div class="col-12">
-                      <label for="yourName" class="form-label">Your Name</label>
-                      <input type="text" name="name" class="form-control" id="yourName" required>
-                      <div class="invalid-feedback">Please, enter your name!</div>
+                      <label for="yourName" class="form-label">First Name</label>
+                      <input type="text" name="firstname" class="form-control" id="yourFirstName" required>
+                      <!-- <div class="invalid-feedback">Please, enter your name!</div> -->
                     </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Your Email</label>
+                      <label for="yourName" class="form-label">Last Name</label>
+                      <input type="text" name="lastname" class="form-control" id="yourLastName" required>
+                      <!-- <div class="invalid-feedback">Please, enter your name!</div> -->
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">Email</label>
                       <input type="email" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                      <!-- <div class="invalid-feedback">Please enter a valid Email adddress!</div> -->
                     </div>
 
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
-                      <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please choose a username.</div>
-                      </div>
-                    </div>
+                    <!-- <div class="col-12">
+                      <label for="yourName" class="form-label">Mobile</label>
+                      <input type="text" name="mobile" class="form-control" id="yourMobile" required>
+                      <div class="invalid-feedback">Please, enter your Mobile number!</div>
+                    </div> -->
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="password" class="form-control" id="password" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
+                    
+                    <div class="col-12">
+                      <label for="yourPassword" class="form-label">Confirm Password</label> 
+                      <input type="password" name="cpassword" class="form-control" id="cpassword" required>
+                      <div class="invalid-feedback">Please enter your Confirm password!</div>
+                    </div>
+
+                    <!-- <div class="col-12">
+                      <label for="yourImage" class="form-label">Upload Image</label> 
+                      <input class="form-control"  type="file" name="imagefile" id="file">
+                      <div class="invalid-feedback">Please enter your Confirm password!</div>
+                    </div> -->
+
                     <div class="col-12">
                       <div class="form-check">
-                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" >
                         <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                        <div class="invalid-feedback">You must agree before submitting.</div>
+                        <!-- <div class="invalid-feedback">You must agree before submitting.</div> -->
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                      <button class="btn btn-primary w-100" type="submit" id="btn_create_account" name="create" >Create Account</button>
+                      <!-- <input type="submit" value="Create Account"> -->
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></p>
+                      <p class="small mb-0">Already have an account? <a href="sign_in.php">Log in</a></p>
                     </div>
                   </form>
 
                 </div>
-              </div>
-
-              <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
               </div>
 
             </div>
@@ -137,9 +153,116 @@
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/validation.min.js"></script>
+  <script src="assets/js/additionalmethods.min.js"></script>
+ <script>
+  $(function()
+{
+    $("#registerform").validate(
+      {
+        rules: 
+        {
+           firstname: 
+          {
+           required: true
+           },
+          lastname: 
+           {
+            required: true
+         },
+          email: 
+          {
+            required: true,
+            email: true,
+            remote:"check-email.php",
+          },
+          password: 
+          {
+            required: true,
+            minlength: 6,
+            maxlength: 12
+          },
+          cpassword: 
+          {
+            required: true,
+            equalTo: "#password"
+          }
+        },
+        messages: 
+        {
+           firstname: 
+           {
+             required: "Please enter your first name"
+           },
+           lastname: 
+           {
+             required: "Please enter your last name"
+           },
+          email: 
+          {
+            required: "Please enter your email address.",
+            remote: "Email-Id already exists."
+          },
+          password: 
+          {
+            required: "Please enter your password.",
+            minlength: "Your password must be at least 6 characters long",
+            maxlength:"your password must not exceed 12 characters long"
+          },
+          cpassword: 
+          {
+            required: "Please enter your confirm password.",
+            equalTo: "Please enter the same password as above"
+          }
+        }
+      });	
+});
+  </script>
+  <script>
+           $(document).on('submit', '#registerform', function (e) {
+            e.preventDefault();
+            
+            var data = $("#registerform").serialize();
+          
+
+            $.ajax({
+                type: "POST",
+                url: "register.php",
+                data: data,
+                dataType:"json",
+               
+                success: function (response) {
+                    
+                   // var res = jQuery.parseJSON(response);
+                    if(response.status == 422) {
+                        $('#errorMessage').removeClass('d-none');
+                        $('#errorMessage').text(response.message);
+
+                    }
+                    else if(response.status == 404) {
+                        $('#errorMessage').removeClass('d-none');
+                        $('#errorMessage').text(response.message);
+
+                    }
+                    else if(response.status == 200){
+
+                        $('#errorMessage').removeClass('d-none');
+                        $('#registerform')[0].reset();
+                        //window.location('sign_up.php');
+                        $('#errorMessage').text(response.message);
+                      }
+                      else if(response.status == 500) {
+                         $('#errorMessage').removeclass('d-none');
+                        $('#errorMessage').text(response.message);
+                    }
+                }
+            });
+
+        });
+  </script>
 
 </body>
 
