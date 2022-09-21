@@ -43,14 +43,14 @@
           <i class="bi bi-circle"></i><span>Add</span>
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a href="view.php">
           <i class="bi bi-circle"></i><span>View</span>
         </a>
-      </li>
+      </li> -->
       <li>
         <a href="edit-delte.php">
-          <i class="bi bi-circle"></i><span>Edit/Delete</span>
+          <i class="bi bi-circle"></i><span>View</span>
         </a>
       </li>
     </ul>
