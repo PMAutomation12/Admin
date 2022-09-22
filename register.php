@@ -31,16 +31,16 @@ if(isset($_POST['email']))
     }
 
     else{
-        $sql1 = "INSERT INTO user(email,password) VALUES ('$email','$password')";
-      
-      
+        $sql3 = "SELECT id FROM roles WHERE role_key = 'admin' AND status = '1'";
+        $excute3 = $conn->query($sql3);
+        $result3 = $excute3->fetch_object();
+        $role = $result3->id;
+
+        $sql1 = "INSERT INTO user(email,password,role) VALUES ('$email','$password','$role')";
         $result1 = $conn->query($sql1);
         $last_id = $conn->insert_id;
       
         $sql2 = "INSERT INTO profile (user_id,first_name,last_name) VALUES ('$last_id','$firstname','$lastname')";
-      
-      
-      //  $sql2 = "SELECT  FROM roles WHERE role_key = +"admin" AND status = "1"";
         $result2 = $conn->query($sql2);
                   if($result1)
                       {
