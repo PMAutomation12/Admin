@@ -33,8 +33,8 @@ if(isset($_POST['email']))
     else{
         $sql3 = "SELECT id FROM roles WHERE role_key = 'admin' AND status = '1'";
         $excute3 = $conn->query($sql3);
-        $result3 = $excute3->fetch_object();
-        $role = $result3->id;
+        $results3 = $excute3->fetch_object();
+        $role = $results3->id;
 
         $sql1 = "INSERT INTO user(email,password,role) VALUES ('$email','$password','$role')";
         $result1 = $conn->query($sql1);
