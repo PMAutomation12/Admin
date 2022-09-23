@@ -1,3 +1,4 @@
+<?php require('session.php');?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,16 +40,12 @@
                   $sql = "SELECT email FROM user WHERE email = '$session_email'";
                   $result = $conn->query($sql);
 
-                  $query ="SELECT  `user`.`id`,`profile`.first_name,`profile`.last_name,`profile`.username,`profile`.mobile,user.email
+                  $query ="SELECT  `user`.`id`,`profile`.first_name,`profile`.last_name,`profile`.username,`profile`.mobile,`profile`.picture,user.email
 
                   FROM `user`
 
                   LEFT JOIN profile ON `profile`.user_id = user.id WHERE user.email = '$session_email'";
-
-                  
-                 // print_r($query);
-                 $result1 = $conn->query($query);
-                // print_r($result1);
+                  $result1 = $conn->query($query);
                   if($result1->num_rows > 0)
 
                   {
@@ -128,11 +125,11 @@
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="" alt="Profile">
-                        <div class="pt-2">
+                        <img src=".uploads/<?= $fetch['mobile']?>" alt="Profile">
+                        <!-- <div class="pt-2">
                           <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                           <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
 
