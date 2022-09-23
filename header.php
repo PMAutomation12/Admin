@@ -1,9 +1,3 @@
-<?php 
-session_start();
-if(!isset($_SESSION['email'])){
-  header('Location:sign_in.php');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +66,7 @@ if(!isset($_SESSION['email'])){
         </li>
 
         <li>
-          <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+          <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
             <i class="bi bi-person"></i>
             <span>My Profile</span>
           </a>

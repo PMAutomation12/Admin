@@ -64,7 +64,7 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                  <div id="errorMessage" class="alert alert-success d-none"></div>
+                  <div id="errorMessage" class="alert alert-danger d-none"></div>
                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
@@ -81,12 +81,6 @@
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
                     </div>
 
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                      </div>
-                    </div>
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit" name="login">Login</button>
                     </div>
@@ -179,12 +173,17 @@
 
                 // console.log(res.status);
                   if(response.status == 200) {
-                    console.log("Success");
+                    //console.log("Success");
                       $('#errorMessage').addClass('d-none');
                        window.location ="index.php";
-
-                  }else if(response.status == 201){
-                    console.log("failure");
+                  }
+                  else if(response.status == 422){
+                   // console.log("failure");
+                      $('#errorMessage').removeClass('d-none');
+                      $('#errorMessage').text(response.message);
+                  }
+                  else if(response.status == 201){
+                    //console.log("failure");
                       $('#errorMessage').removeClass('d-none');
                       $('#errorMessage').text(response.message);
                   }
